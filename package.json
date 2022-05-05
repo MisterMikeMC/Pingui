@@ -1,0 +1,34 @@
+{
+    "name": "komi-san",
+    "version": "0.0.1",
+    "main": "src/index.ts",
+    "scripts": {
+        "start": "tsc && node compiled/index.js",
+        "build": "tsc",
+        "dev": "nodemon --exec node --loader ts-node/esm/transpile-only src/index.ts"
+    },
+    "author": "MrMikeMC",
+    "license": "ISC",
+    "dependencies": {
+        "@discordjs/opus": "0.7.0",
+        "@discordjs/voice": "0.6.0",
+        "@distube/spotify": "1.1.0",
+        "beautify": "0.0.8",
+        "discord-modals": "1.3.5",
+        "discord.js": "13.6.0",
+        "distube": "3.1.1",
+        "dotenv": "10.0.0",
+        "express": "4.17.2",
+        "glob": "7.2.0",
+        "mongoose": "5.13.14",
+        "path": "0.12.7",
+        "util": "0.12.4"
+    },
+    "devDependencies": {
+        "@types/node": "17.0.21",
+        "chalk": "4.1.2",
+        "nodemon": "2.0.15",
+        "ts-node": "10.4.0",
+        "typescript": "4.5.4"
+    }
+}

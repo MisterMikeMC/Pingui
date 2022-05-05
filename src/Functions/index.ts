@@ -1,0 +1,1 @@
+export { RandomPositionOfArray } from "./RandomPositionOfArray";
