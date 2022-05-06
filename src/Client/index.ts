@@ -11,7 +11,8 @@ import { SlashCommandsRegisterOptions } from "../interfaces/SlashCommandsRegiste
 import { CommandType } from "../interfaces/SlashCommandsInterface";
 import { join } from "path";
 import { SpotifyPlugin } from "@distube/spotify";
-import Distube from "distube";
+import { SoundCloudPlugin } from "@distube/soundcloud";
+import Distube, { DisTubeOptions } from "distube";
 import glob from "glob";
 import discordModals from "discord-modals";
 const globPromise = promisify(glob);
@@ -49,9 +50,9 @@ export default class Pingui extends Client {
     });
   }
   public async start(): Promise<void> {
-    this.login(process.env.Token);
+    this.login(process.env.BOT_TOKEN);
     this.registerModules();
-    connect(process.env.MongoURL, {
+    connect(process.env.MONGO_URI, {
       useUnifiedTopology: true,
       useFindAndModify: false,
       useNewUrlParser: true,
@@ -92,14 +93,18 @@ export default class Pingui extends Client {
       this.on(event.name, event.run.bind(null, this));
     });
     /* Distube Event Handler */
-    const Options: DistubeOptions = {
+    const Options: DisTubeOptions = {
       emitAddSongWhenCreatingQueue: false,
       emitAddListWhenCreatingQueue: false,
       emitNewSongOnly: true,
       leaveOnEmpty: true,
       nsfw: false,
-      updateYouTubeDL: true,
-      plugins: [new SpotifyPlugin()],
+      plugins: [
+        new SpotifyPlugin({
+          emitEventsAfterFetching: true,
+        }),
+        new SoundCloudPlugin(),
+      ],
     };
     this.distube = new Distube(this, Options);
     const DistubeEventPath = join(__dirname, "..", "Distube");
