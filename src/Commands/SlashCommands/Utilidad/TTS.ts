@@ -1,20 +1,20 @@
 import { SlashCommandStructure } from "../../../interfaces/SlashCommand";
-import { Modal, showModal, TextInputComponent } from "discord-modals";
+import { Modal, TextInputComponent, showModal } from "discord-modals";
 export default new SlashCommandStructure({
-  name: "say",
-  description: "Repito lo que me digas.",
+  name: "tts",
+  description: "Envia un mensaje de texto en voz.",
   run: async ({ Pingui, interaction }): Promise<void> => {
     let ModalSay = new Modal()
-      .setCustomId("sayModal")
+      .setCustomId("ttsModal")
       .setTitle("Que quieres que diga?")
       .addComponents(
         new TextInputComponent()
-          .setCustomId("sayInput")
+          .setCustomId("ttsInput")
           .setLabel("Mensaje")
           .setRequired(true)
           .setPlaceholder("Hola.")
           .setMinLength(1)
-          .setStyle("LONG")
+          .setStyle("SHORT")
       );
     showModal(ModalSay, {
       client: Pingui,

@@ -1,12 +1,15 @@
 import { Event } from "../interfaces";
 import { Util } from "../Data/Emojis.json";
 import { Play } from "../Functions";
+import discordTTS from 'discord-tts'
 export const event: Event = {
   name: "modalSubmit",
   run: async (Pingui, interactionModal): Promise<void> => {
     if (interactionModal.customId === "sayModal") {
       const sayInput = interactionModal.getTextInputValue("sayInput");
       interactionModal.reply(`${sayInput}`);
+    } else if (interactionModal.customId === "ttsModal") {
+      const ttsInput = interactionModal.getTextInputValue("ttsInput");
     } else if (interactionModal.customId === "playMusicModal") {
       const Song = interactionModal.getTextInputValue("songInput");
       let Response = await Play(Pingui, interactionModal, Song);
