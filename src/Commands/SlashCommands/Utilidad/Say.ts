@@ -16,7 +16,7 @@ export default new SlashCommandStructure({
           .setMinLength(1)
           .setStyle("LONG")
       );
-    showModal(ModalSay, {
+    await showModal(ModalSay, {
       client: Pingui,
       interaction: interaction,
     });

@@ -68,7 +68,7 @@ export default class Pingui extends Client {
     /* Discord Modals */
     discordModals(this);
     /* UnhandledRejection */
-    process.on("unhandledRejection", (Error): void => console.log(Error));
+    process.on("unhandledRejection", (Error): void => null);
     /* Command Handler */
     const commandPath = join(__dirname, "..", "Commands", "Commands");
     readdirSync(commandPath).forEach((Categories): void => {
@@ -98,6 +98,8 @@ export default class Pingui extends Client {
       emitAddListWhenCreatingQueue: false,
       emitNewSongOnly: true,
       leaveOnEmpty: true,
+      emptyCooldown: 20000,
+      leaveOnStop: false,
       nsfw: false,
       plugins: [
         new SpotifyPlugin({

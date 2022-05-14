@@ -1,18 +1,19 @@
 import { Event } from "../interfaces";
 import { Util } from "../Data/Emojis.json";
 import { Play } from "../Functions";
-import discordTTS from 'discord-tts'
+import { ModalSubmitInteraction } from "discord-modals";
+import { Interaction } from "discord.js";
 export const event: Event = {
   name: "modalSubmit",
-  run: async (Pingui, interactionModal): Promise<void> => {
+  run: (Pingui, interactionModal: ModalSubmitInteraction): void => {
     if (interactionModal.customId === "sayModal") {
       const sayInput = interactionModal.getTextInputValue("sayInput");
-      interactionModal.reply(`${sayInput}`);
-    } else if (interactionModal.customId === "ttsModal") {
-      const ttsInput = interactionModal.getTextInputValue("ttsInput");
+      interactionModal.reply({
+        content: `${sayInput}`,
+      });
     } else if (interactionModal.customId === "playMusicModal") {
       const Song = interactionModal.getTextInputValue("songInput");
-      let Response = await Play(Pingui, interactionModal, Song);
+      let Response = Play(Pingui, interactionModal as Interaction, Song);
       if (Response === "Error1") {
         interactionModal.reply(`${Util.No} | Hubo un error inesperado.`);
       }
@@ -29,9 +30,6 @@ export const event: Event = {
       if (Response === "Serching") {
         interactionModal.reply(`🔎 | Añadiendo...`);
       }
-      setTimeout((): void => {
-        interactionModal.deleteReply();
-      }, 5000);
     }
   },
 };

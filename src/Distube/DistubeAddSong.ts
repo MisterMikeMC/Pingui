@@ -2,6 +2,7 @@ import { MessageEmbed } from "discord.js";
 import { Queue, Song } from "distube";
 import { EventDistube } from "../interfaces";
 import { Util } from "../Data/Emojis.json";
+import Pingui from "../Client";
 export const distubeevent: EventDistube = {
   name: "addSong",
   run: (Pingui, queue: Queue, song: Song): void => {

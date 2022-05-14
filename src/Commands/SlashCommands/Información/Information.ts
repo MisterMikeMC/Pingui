@@ -8,7 +8,7 @@ export default new SlashCommandStructure({
   options: [
     {
       name: "ping",
-      description: "Muestra el ping de Pingui-san.",
+      description: "Muestra el ping de Pingui.",
       type: "SUB_COMMAND",
     },
   ],

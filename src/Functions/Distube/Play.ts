@@ -1,5 +1,4 @@
 import { GuildMember, Interaction } from "discord.js";
-import { ExtendedInteraction } from "../../interfaces/SlashCommandsInterface";
 import Client from "../../Client";
 export let Play = (
   Pingui: Client,
@@ -7,7 +6,6 @@ export let Play = (
   Song: String
 ): string => {
   let guildMember = interaction.member as GuildMember;
-  let interactionExtended = interaction as ExtendedInteraction;
   try {
     if (!guildMember.voice.channel) return "Error2";
     if (

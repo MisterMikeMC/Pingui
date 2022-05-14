@@ -4,7 +4,7 @@ import { Util } from "../Data/Emojis.json";
 import { EventDistube } from "../interfaces";
 export const distubeevent: EventDistube = {
   name: "finish",
-  run: (Pingui, queue: Queue, song: Song): void => {
+  run: (_Pingui, queue: Queue, _song: Song): void => {
     queue.textChannel.send({
       embeds: [
         new MessageEmbed()

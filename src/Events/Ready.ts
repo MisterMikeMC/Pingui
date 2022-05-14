@@ -1,21 +1,22 @@
 import { Event } from "../interfaces";
-import { RandomPositionOfArray } from "../Functions";
 export const event: Event = {
   name: "ready",
   run: (Pingui): void => {
+    let Status = [
+      { name: `Mencioname por ayuda.`, type: 1 },
+      { name: `En desarrollo.`, type: 1 },
+    ];
+    let StatusIndex = 0;
     setInterval((): void => {
-      let Status = [
-        { name: `Mencioname por ayuda.`, type: 1 },
-        { name: `En desarrollo.`, type: 1 },
-      ];
       let RefreshStatus = (status: object[]): void => {
         Pingui.user.setPresence({
           status: "online",
-          activities: [RandomPositionOfArray(status)],
+          activities: [status[StatusIndex]],
         });
+        StatusIndex = (StatusIndex + 1) % Status.length;
       };
       RefreshStatus(Status);
-    }, 15000);
+    }, 30000);
     console.log(`${Pingui.user.username} is ready.`);
   },
 };

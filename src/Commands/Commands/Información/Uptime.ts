@@ -4,9 +4,7 @@ import { Util } from "../../../Data/Emojis.json";
 export const command: Command = {
   name: "uptime",
   aliases: ["online-time"],
-  description: "Revisa cuanto tiempo lleva Komi-san en linea.",
-  syntaxis: "",
-  category: "Información",
+  description: "Revisa cuanto tiempo lleva Pingui en linea.",
   cooldown: {
     name: "UptimeCooldown_",
     time: "10s",
