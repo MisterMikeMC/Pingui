@@ -68,7 +68,7 @@ export default class Pingui extends Client {
     /* Discord Modals */
     discordModals(this);
     /* UnhandledRejection */
-    process.on("unhandledRejection", (Error): void => null);
+    process.on("unhandledRejection", (Error): void => console.log(Error));
     /* Command Handler */
     const commandPath = join(__dirname, "..", "Commands", "Commands");
     readdirSync(commandPath).forEach((Categories): void => {

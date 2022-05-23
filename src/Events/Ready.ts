@@ -3,7 +3,6 @@ export const event: Event = {
   name: "ready",
   run: (Pingui): void => {
     let Status = [
-      { name: `Mencioname por ayuda.`, type: 1 },
       { name: `En desarrollo.`, type: 1 },
     ];
     let StatusIndex = 0;
